@@ -1,0 +1,15 @@
+<div class="row" style="height: 100%; padding-top: 12vh; display: flex; justify-content: center; overflow-y: auto;">
+	<app-discussions-list [isInitial]="false" [isDetail]="true"  class="mt-5 mb-4 pt-3 col-md-9" [array]="discussion"></app-discussions-list>
+
+	<div class="col-md-10 bg-white py-4 px-5 mb-5"
+		style="border-radius: 3px; min-height: 50vh; box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);">
+		<app-response-form *ngIf="discussion.length != 0" (responseAdded)="loadCommentaries(discussion[0].Id)" [initialId]="discussion[0].Id"></app-response-form>
+		<div class="row mb-3">
+			<h5>Respuestas: {{commentaries.length}}</h5>
+		</div>
+		<app-discussions-list *ngIf="commentaries.length > 0" [isInitial]="false" [array]="commentaries"></app-discussions-list>
+		<p *ngIf="commentaries.length == 0" class="text-center mt-4 font-italic" style="font-size: 17px;">
+			Aún no hay respuestas para esta discusión...
+		</p>
+	</div>
+</div>

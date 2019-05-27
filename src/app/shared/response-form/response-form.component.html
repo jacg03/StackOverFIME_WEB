@@ -1,0 +1,14 @@
+<form class="col-md-12">
+	<div class="row">
+		<p class="font-weight-bold">
+			<fa name="user" class="mr-2 text-success"></fa> {{credentials != null ? credentials.Name : 'Nombre de usuario'}}
+		</p>
+	</div>
+	<div class="row">
+		<textarea name="discussion" cols="30" rows="3" placeholder="Escribe una respuesta..." class="form-control"
+			style="border-radius: 10px;" [(ngModel)]="text"></textarea>
+	</div>
+	<div class="row text-right pt-2" style="display: flex; justify-content: flex-end;">
+		<button class="btn btn-sm btn-success px-5" style="border-radius: 30px;" (click)="add()">Responder</button>
+	</div>
+</form>

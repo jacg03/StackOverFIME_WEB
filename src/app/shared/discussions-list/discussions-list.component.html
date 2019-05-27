@@ -1,0 +1,36 @@
+<div class="row px-5 py-2" *ngFor="let item of array">
+	<div class="col-md-12">
+		<div class="row" (click)="isInitial ? goToDiscussion(item.Id) : null">
+			<div class="col-md-4">
+				<p class="font-weight-bold">
+					<fa name="user" class="mr-2 text-success" *ngIf="isDetail || isInitial"></fa>{{item.Name}}
+				</p>
+			</div>
+			<div class="offset-md-5 text-right col-md-3" *ngIf="isDetail || isInitial">
+				<small>{{item.CreatedAt | date: 'dd/MM/yyyy'}}</small>
+			</div>
+			<div class="col-md-12 px-3 mt-2">
+				<p class="text-justify">
+					{{item.Text}}
+				</p>
+			</div>
+			<div class="col-md-12" *ngIf="isInitial">
+				<p class="text-right">
+					<small class="font-weight-bold">Respuestas: </small><small>{{item.Answers}}</small>
+				</p>
+			</div>
+			<div class="col-md-12 text-right" *ngIf="!isInitial && !isDetail">
+				<small class="mr-3">{{item.CreatedAt | date: 'dd/MM/yyyy'}}</small>
+			</div>
+		</div>
+		<div class="row">
+			<div *ngIf="canDelete" class="col-md-12">
+				<button class="btn btn-sm btn-outline-danger" style="border-radius: 20px; width: 100%;"
+					(click)="delete(item.Id)">Eliminar</button>
+			</div>
+			<div class="col-md-12">
+				<hr *ngIf="array.length > 1">
+			</div>
+		</div>
+	</div>
+</div>
